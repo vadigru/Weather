@@ -7,23 +7,22 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" href="weather.css">
-  <link rel="stylesheet" href="bootstrap.css">
-  <link rel="icon" type="image/png" href="hello_weather_ico.png">
-
-  <script src="jquery-3.3.1.js"></script>
-  <script src="bootstrap.js"></script>
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="bootstrap/bootstrap.css">
+  <link rel="icon" type="image/png" href="img/hello_weather_ico.png">
 
   <title>hello weather</title>
 </head>
 
 <body>
   <div class="weather_container">
-    <div class="logo">hello <img src="hello_weather_ico.png"> weather</div>
+    <div class="logo">hello <img src="img/hello_weather_ico.png"> weather</div>
     <div class="search input-group mb-3">
       <input type="text" name="search" id="search" placeholder="Find your location" class="form-control search">
     </div>
-    <ul class="list-group getloc" id="result"></ul>
+    <div class="output">
+      <ul class="list-group getloc" id="result"></ul>
+    </div>
     <div class="weather_circle hidden">
       <div class="place"></div>
       <div class="icon"></div>
@@ -34,13 +33,14 @@
     <div class="data"></div>
     <div class="map"></div>
     <div class="hidden h alert alert-info" role="alert">
-      <div class="gr h_date">Time</div>
-      <div class="gr h_icon"></div>
-      <div class="gr h_descr">Conditions</div>
-      <div class="gr h_temp">Temperature</div>
-      <div class="gr h_wind">Wind</div>
+      <div class="h_date">Time</div>
+      <div class="h_icon"></div>
+      <div class="h_descr">Conditions</div>
+      <div class="h_temp">Temperature</div>
+      <div class="h_wind">Wind</div>
     </div>
     <div class="pins"></div>
+
     <template>
       <div class="hourly">
         <div class="temp__time">time</div>
@@ -52,10 +52,12 @@
     </template>
   </div>
 
-  <script src="search.js"></script>
-  <script src="backend.js"></script>
-  <script src="weather.js"></script>
-  <script src="render.js"></script>
+  <script src="bootstrap/bootstrap.js"></script>
+  <script src="jquery/jquery-3.3.1.js"></script>
+  <script src="jquery/search.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/render.js"></script>
 
 
 </body>

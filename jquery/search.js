@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $(`#search`).keydown(function () {
-    $.getJSON(`list.json`, function (data) {
+    $.getJSON(`json/list.json`, function (data) {
       let searchField = $(`#search`).val();
       let expression = new RegExp(searchField, `i`);
       $(`#result`).html(``);

@@ -1,5 +1,5 @@
 (function () {
-  let CITY = `list.json`;
+  let CITY = `./json/list.json`;
 
   let getFile = (fileName) => {
     let request = new XMLHttpRequest();
