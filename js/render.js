@@ -53,10 +53,11 @@
 
   let renderDailyWeather = function (data) {
     let fragment = document.createDocumentFragment();
+    console.log(data);
     data.forEach(function (item) {
       let element = document.querySelector(`template`).content.querySelector(`.hourly`).cloneNode(true);
       element.querySelector(`.temp__icon>img`).src = `https://openweathermap.org/img/w/` + item.weather[0].icon + `.png`;
-      element.querySelector(`.temp__time`).textContent = item.dt_txt + ` `;
+      element.querySelector(`.temp__time`).textContent = item.dt_txt.slice(5, 10) + ` / ` + item.dt_txt.slice(10, 16);
       element.querySelector(`.temp__description`).textContent = item.weather[0].description;
       element.querySelector(`.temp__temperature`).textContent = ` ` + parseInt(item.main.temp, 10) + ` °C`;
       element.querySelector(`.temp__wind`).textContent = item.wind.speed + ` m/s`;
