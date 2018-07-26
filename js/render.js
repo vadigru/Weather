@@ -2,7 +2,7 @@
   let weather = document.querySelector(`.weather_container`);
   let icon = weather.querySelector(`.icon`);
 
-  let renderCurrentWeather = function (data) {
+  let renderCurrentWeather = (data) => {
     let description = weather.querySelector(`.description`);
     let place = weather.querySelector(`.place`);
     let temperature = weather.querySelector(`.temperature`);
@@ -23,7 +23,7 @@
     place.textContent = data.name + `, ` + data.sys.country;
   };
 
-  let renderWeather = function (data, lon, lat) {
+  let renderWeather = (data, lon, lat) => {
     let dataList = data.list;
     let dataArray = [];
     let map = weather.querySelector(`.map`);
@@ -41,7 +41,12 @@
     } else {
       height = height / 2;
     }
-    iframe.height = height;
+
+    let wc = document.querySelector(`.weather_circle`);
+    wc.style.top = height / 2.2 + `px`;
+    console.log(height);
+    console.log(wc.style.top);
+    iframe.height = height + `px`;
     iframe.frameBorder = `0`;
     iframe.style.border = `0`;
     iframe.src = `https://www.google.com/maps/embed/v1/view?center=` + lat + `, ` + lon + `&zoom=10&key=AIzaSyCLMJSENck6qAnALYTF0pjMhE28e_WuN9s`;
@@ -51,16 +56,15 @@
     pins.appendChild(renderDailyWeather(dataArray));
   };
 
-  let renderDailyWeather = function (data) {
+  let renderDailyWeather = (data) => {
     let fragment = document.createDocumentFragment();
-    console.log(data);
     data.forEach(function (item) {
       let element = document.querySelector(`template`).content.querySelector(`.hourly`).cloneNode(true);
       element.querySelector(`.temp__icon>img`).src = `https://openweathermap.org/img/w/` + item.weather[0].icon + `.png`;
       element.querySelector(`.temp__time`).textContent = item.dt_txt.slice(5, 10) + ` / ` + item.dt_txt.slice(10, 16);
       element.querySelector(`.temp__description`).textContent = item.weather[0].description;
-      element.querySelector(`.temp__temperature`).textContent = ` ` + parseInt(item.main.temp, 10) + ` °C`;
-      element.querySelector(`.temp__wind`).textContent = item.wind.speed + ` m/s`;
+      element.querySelector(`.temp__temperature`).textContent = ` ` + parseInt(item.main.temp, 10);
+      element.querySelector(`.temp__wind`).textContent = item.wind.speed;
       fragment.appendChild(element);
     });
     return fragment;
