@@ -1,0 +1,25 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "Погода",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint js/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vadigru/Weather.git"
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "Vadim Grunenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vadigru/Weather/issues"
+  },
+  "homepage": "https://github.com/vadigru/Weather#readme",
+  "dependencies": {
+    "eslint": "^5.4.0"
+  }
+}
