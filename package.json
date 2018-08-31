@@ -19,7 +19,5 @@
     "url": "https://github.com/vadigru/Weather/issues"
   },
   "homepage": "https://github.com/vadigru/Weather#readme",
-  "dependencies": {
-    "eslint": "^5.4.0"
-  }
+  "dependencies": {}
 }
