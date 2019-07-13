@@ -1,13 +1,12 @@
 (function () {
   let body = document.querySelector(`body`);
   let weather = document.querySelector(`.weather_container`);
-  let icon = document.querySelector(`.icon`);
+  // let icon = document.querySelector(`.icon`);
   let search = weather.querySelector(`#search`);
   let result = weather.querySelector(`#result`);
 
   let onClickResultHandle = (evt) => {
     let target = evt.target;
-
     window.cityList.forEach(function (item) {
       if (target.textContent === (item.name + `, ` + item.country)) {
         let cityId = item.id;

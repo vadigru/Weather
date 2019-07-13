@@ -27,6 +27,7 @@
       if (this.readyState === 4 && this.status === 200) {
         const obj = this.responseText;
         const obj1 = JSON.parse(obj);
+        console.log(obj1);
         window.render.renderWeather(obj1, lon, lat);
       }
     };

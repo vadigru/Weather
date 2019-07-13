@@ -44,8 +44,6 @@
 
     let wc = document.querySelector(`.weather_circle`);
     wc.style.top = height / 2.2 + `px`;
-    console.log(height);
-    console.log(wc.style.top);
     iframe.height = height + `px`;
     iframe.frameBorder = `0`;
     iframe.style.border = `0`;
@@ -56,15 +54,28 @@
     pins.appendChild(renderDailyWeather(dataArray));
   };
 
+  let dateToArray = (dt) => {
+    let dateArray = dt.replace(/-/g, ' ').split(' ');
+    return dateArray;
+  };
+
+  let timeToArray = (tm) => {
+    let time = tm.replace(/-/g, ':').split(' ');
+    let timeArray = time[1].split(/:/);
+    return timeArray;
+  };
+
   let renderDailyWeather = (data) => {
     let fragment = document.createDocumentFragment();
     data.forEach(function (item) {
       let element = document.querySelector(`template`).content.querySelector(`.hourly`).cloneNode(true);
       element.querySelector(`.temp__icon>img`).src = `https://openweathermap.org/img/w/` + item.weather[0].icon + `.png`;
-      element.querySelector(`.temp__time`).textContent = item.dt_txt.slice(5, 10) + ` / ` + item.dt_txt.slice(10, 16);
+      // element.querySelector(`.temp__time`).textContent = item.dt_txt.slice(5, 10) + ` / ` + item.dt_txt.slice(10, 16);
+      element.querySelector(`.temp__time`).textContent = dateToArray(item.dt_txt)[2] + '-' + dateToArray(item.dt_txt)[1] + ' | '
+                                                       + timeToArray(item.dt_txt)[0] + ':' + timeToArray(item.dt_txt)[1];
       element.querySelector(`.temp__description`).textContent = item.weather[0].description;
-      element.querySelector(`.temp__temperature`).textContent = ` ` + parseInt(item.main.temp, 10);
-      element.querySelector(`.temp__wind`).textContent = item.wind.speed;
+      element.querySelector(`.temp__temperature`).textContent = ` ` + parseInt(item.main.temp, 10) + ` °C`;
+      element.querySelector(`.temp__wind`).textContent = item.wind.speed + ` m/s`;
       fragment.appendChild(element);
     });
     return fragment;
@@ -89,10 +100,10 @@
   };
 
   window.render = {
-    renderCurrentWeather: renderCurrentWeather,
-    renderWeather: renderWeather,
-    renderDailyWeather: renderDailyWeather,
-    removePins: removePins
+    renderCurrentWeather,
+    renderWeather,
+    renderDailyWeather,
+    removePins
   };
 
 })();
